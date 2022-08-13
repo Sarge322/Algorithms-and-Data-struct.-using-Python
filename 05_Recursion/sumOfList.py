@@ -14,4 +14,17 @@ def sum_of_list(ls):
     return x + j
 
 
-sum_of_list([i for i in range(20)])
+# sum_of_list([i for i in range(20)])
+
+def calculate_sum_of_list_elements(values: list[int]) -> int:
+    if len(values) == 1:
+        return values[0]
+    else:
+        mid = len(values) // 2
+        left = calculate_sum_of_list_elements(values[:mid])
+        right = calculate_sum_of_list_elements(values[mid:])
+
+    return left + right
+
+
+calculate_sum_of_list_elements(([i for i in range(20)]))
