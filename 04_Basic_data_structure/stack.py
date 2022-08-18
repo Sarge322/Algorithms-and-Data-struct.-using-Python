@@ -2,6 +2,10 @@ class Stack:
 
     def __init__(self):
         self.ls = []
+        self.name = None
+
+    def setName(self, name):
+        self.name = name
 
     def isEmpty(self):
         return self.ls == []
@@ -17,6 +21,9 @@ class Stack:
 
     def size(self):
         return len(self.ls)
+
+    def show(self):
+        return self.ls
 
 
 def rev_string(seq):
@@ -62,6 +69,7 @@ def sym_balance(seq):
                 break
     return res
 
+
 # print(sym_balance("[[()]()([])]"))
 
 def test_stack():
@@ -92,6 +100,7 @@ def test_stack():
     # assert x == 334, f"wrong answer:{x}"
     # assert rev_string("Hello!") == "!olleH", "wrong answer: %s}" % rev_string("Hello!")
     # print('Purrrrfect!')
+
 
 if __name__ == "__main__":
     test_stack()
