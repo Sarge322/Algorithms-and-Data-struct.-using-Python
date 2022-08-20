@@ -8,11 +8,11 @@ def reverse(num):
     ls = []
     if num < 10:
         ls.append(int(num))
-        print(int(num))
+        print(int(num)),
         return ls
     else:
         x = num % 10
-        print(int(x))
+        print(int(x.rstop)),
         ls.append(int(x))
         ls.extend(reverse((num - x) / 10))
         return ls
