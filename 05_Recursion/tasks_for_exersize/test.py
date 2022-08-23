@@ -1,4 +1,10 @@
-l = [0, 1, 2, 3, 4]
+def tes():
+    str = input("Num: ")
+    x = tes() + str
+    if x == 5:
+        return
+    else:
+        return x
 
 
-print(l[2:])
+tes()
