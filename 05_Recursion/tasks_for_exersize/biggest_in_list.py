@@ -6,18 +6,14 @@
 # последовательности. Гарантируется, что последовательность содержит хотя бы одно число (кроме нуля).
 
 
-def top(ls1):
-    if len(ls1) == 1:
-        return ls1[0]
+def top():
+    temp = int(input("Type num: "))
+    if temp == 0:
+        return 0
     else:
-        temp = top(ls1[1:])
-        return temp if temp > ls1[0] else ls1[0]
+        x = top()
+        return temp if temp > x else x
 
 
 if __name__ == '__main__':
-    x = '13254788156446'
-    ls = []
-    for i in range(len(x)):
-        ls.append(int(x[i]))
-    print(ls)
-    print(top(ls))
+    print(top())

@@ -15,5 +15,15 @@ def odd(num):
         odd(num[2:])
 
 
+def odd():
+    val = int(input("Type number: "))
+    if val > 0:
+        if val % 2 != 0:
+            print(val)
+            odd()
+        else:
+            odd()
+
+
 if __name__ == '__main__':
-    odd(input("Enter your number: "))
+    odd()
