@@ -18,6 +18,8 @@ def second_max():
         if res[0] < temp:
             res[1] = res[0]
             res[0] = temp
+        elif res[0] > temp > res[1]:
+            res[1] = temp
         return res
 
 
