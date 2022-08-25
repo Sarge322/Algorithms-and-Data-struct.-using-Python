@@ -1,10 +1,8 @@
 def tes():
-    str = input("Num: ")
-    x = tes() + str
-    if x == 5:
-        return
-    else:
-        return x
+    l = int('1234551151')
+    x = l % 10
+    j = l % 100
+    return x, (j - x) // 10
 
 
-tes()
+print(tes())
