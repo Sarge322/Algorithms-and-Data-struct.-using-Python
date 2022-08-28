@@ -1,47 +1,39 @@
 import turtle
+import math
+import random
 
+screen = turtle.Screen()
+screen.setup(1000,1000)
+screen.title("Random Mountain Curves - PythonTurtle.Academy")
 
-def mountains(points, color, my_turtle):
-    my_turtle.fillcolor(color)
-    my_turtle.up()
-    my_turtle.goto(points[0][0], points[0][1])
-    my_turtle.down()
-    my_turtle.begin_fill()
-    my_turtle.goto(points[1][0], points[1][1])
-    my_turtle.goto(points[2][0], points[2][1])
-    my_turtle.goto(points[0][0], points[0][1])
-    my_turtle.end_fill()
+turtle.hideturtle()
+turtle.speed(0)
+turtle.pensize(2)
+turtle.color('dark green')
+MAX_SLOPE = 45
+MIN_SLOPE = -45
+MIN_HEIGHT = 0
+def dist_squared(P1,P2):
+    return (P1[0]-P2[0])**2 + (P1[1]-P2[1])**2
 
+def mountain(P1,P2):
+    if dist_squared(P1,P2) < 9:
+        turtle.goto(P2)
+        return
+    x1,y1 = P1
+    x2,y2 = P2
+    x3 = random.uniform(x1,x2)
+    y3_max = min((x3-x1)*math.tan(math.radians(MAX_SLOPE)) + y1, (x2-x3)*math.tan(-math.radians(MIN_SLOPE)) + y2)
+    y3_min = max((x3-x1)*math.tan(math.radians(MIN_SLOPE)) + y1, (x2-x3)*math.tan(-math.radians(MAX_SLOPE)) + y2)
+    y3_min = max(y3_min, MIN_HEIGHT)
+    y3 = random.uniform(y3_min,y3_max)
+    P3 = (x3, y3)
+    mountain(P1,P3)
+    mountain(P3,P2)
+    return
 
-def get_mid(p1, p2):
-    return (p1[0] + p2[0]) / 2, (p1[1] + p2[1]) / 2
+turtle.up()
 
-
-def sierpinsky(points, degree, my_turtle):
-    colormap = ['blue', 'red', 'green', 'white', 'yellow', 'violet', 'orange']
-    mountains(points, colormap[degree], my_turtle)
-    if degree > 0:
-        sierpinsky([points[0],
-                    get_mid(points[0], points[1]),
-                    get_mid(points[0], points[2])],
-                    degree-1, my_turtle)
-        sierpinsky([points[1],
-                    get_mid(points[0], points[1]),
-                    get_mid(points[1], points[2])],
-                    degree-1, my_turtle)
-        sierpinsky([points[2],
-                    get_mid(points[2], points[1]),
-                    get_mid(points[0], points[2])],
-                    degree-1, my_turtle)
-
-
-def main():
-    my_turtle = turtle.Turtle()
-    my_win = turtle.Screen()
-    my_points = [[-100, -50], [0, 100], [100, -50]]
-    sierpinsky(my_points, 5, my_turtle)
-    my_win.exitonclick()
-
-
-if __name__ == '__main__':
-    main()
+turtle.goto(-400,MIN_HEIGHT)
+turtle.down()
+mountain((-400,MIN_HEIGHT),(400,MIN_HEIGHT))

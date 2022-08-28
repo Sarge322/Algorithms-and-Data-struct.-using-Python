@@ -13,7 +13,7 @@ def o_search(ls1, item):
             return item
         elif ls1[j] > item:
             return o_search(ls1[:j], item)
-        elif ls1[j] < item:
+        else:
             return o_search(ls1[j:], item)
     else:
         return ls1[0]
@@ -23,8 +23,8 @@ def o_search_test():
     for i in range(10):
         x = randint(0, 10)
         ls = [i for i in range(11)]
-        res = o_search(ls, 13)
-        assert res is None, f'Error, {res} != None'
+        res = o_search(ls, 6)
+        assert res ==6, f'Error, {res} != None'
         res = o_search(ls, x)
         assert res == x, f'Error, {res} != {x}'
         res = o_search(ls, x)
