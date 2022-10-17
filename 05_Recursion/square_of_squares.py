@@ -13,7 +13,7 @@ def draw_square(length, color, my_turtle):
 
 def draw_inner_square(length, deepth, my_turtle):
     # set some color list
-    color_map = ['red', 'yellow', 'green', 'brown', 'white', 'purple']
+    color_map = ['red', 'yellow', 'green', 'brown', 'white', 'purple', 'black']
     # drawing initial square
     draw_square(length, color_map[deepth], my_turtle)
     # draw 4 square in
@@ -60,7 +60,7 @@ def main():
     # set length of square side
     side_length = 300
     # set depth of 'square in square' recursion
-    depth = 3
+    depth = 6
     draw_inner_square(side_length, depth, my_turtle)
     my_win.exitonclick()
 

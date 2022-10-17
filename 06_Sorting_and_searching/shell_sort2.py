@@ -1,42 +1,31 @@
-def shellSort(arr):
-    # Start with a big gap, then reduce the gap
-    n = len(arr)
-    gap = n / 2
+from random import randrange
 
-    # Do a gapped insertion sort for this gap size.
-    # The first gap elements a[0..gap-1] are already in gapped
-    # order keep adding one more element until the entire array
-    # is gap sorted
+
+def shellSort(ls):
+    # Start with a big gap, then reduce the gap
+    size = len(ls)
+    gap = size // 2
+    switch = 0
+    # Create gap for
     while gap > 0:
 
-        for i in range(gap, n):
-
-            # add a[i] to the elements that have been gap sorted
-            # save a[i] in temp and make a hole at position i
-            temp = arr[i]
-
-            # shift earlier gap-sorted elements up until the correct
-            # location for a[i] is found
+        for i in range(gap, size):
+            temp = ls[i]
             j = i
-            while j >= gap and arr[j - gap] > temp:
-                arr[j] = arr[j - gap]
+            if j >= gap and ls[j - gap] > temp:
+                print(ls[j - gap], j - gap, '-->', temp, j, 'sw: ', switch)
+                switch += 1
+                ls[j] = ls[j - gap]
                 j -= gap
 
             # put temp (the original a[i]) in its correct location
-            arr[j] = temp
-        gap /= 2
+            ls[j] = temp
+        print('<------------------->')
+        gap = gap // 2
+    return ls
 
 
-# Driver code to test above
-arr = [12, 34, 54, 2, 3]
-
-n = len(arr)
-print("Array before sorting:")
-for i in range(n):
-    print(arr[i]),
-
-shellSort(arr)
-
-print("\nArray after sorting:")
-for i in range(n):
-    print(arr[i]),
+if __name__ == '__main__':
+    lst = [51, 73, -19, -8, 97, 2, 59, 81, 38, -9, 52]
+    print('Unsorted: ', lst)
+    print('Sorted: ', shellSort(lst))
