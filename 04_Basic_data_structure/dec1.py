@@ -5,7 +5,15 @@ def odd(ls1):
             res.append(i)
     return res
 
-def decor_every_third(odd_func):
-    def wrapper(*args):
-        odd()
+def decor_fifth(odd_func):
+    def wrapper():
+        res = odd_func()
+        for i in res:
+            if i%5!=0:
+                res.pop[i]
+        return res
 
+    return wrapper()
+
+
+odd = decor_fifth(odd([1,2,3,4,5]))
